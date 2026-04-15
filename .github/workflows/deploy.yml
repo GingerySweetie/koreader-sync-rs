@@ -13,7 +13,9 @@ jobs:
       
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
-        
+
+      - name: Install wasm-bindgen-cli
+        run: cargo install -f wasm-bindgen-cli --version 0.2.93
       - name: Install worker-build
         run: cargo install -q worker-build --version "^0.1"
         
