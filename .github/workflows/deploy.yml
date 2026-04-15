@@ -10,18 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Install wasm-bindgen-cli
-        run: cargo install -f wasm-bindgen-cli --version 0.2.93
       - name: Install worker-build
         run: cargo install -q worker-build --version "^0.1"
-        
+
+      - name: Update wasm-bindgen
+        run: cargo update -p wasm-bindgen --precise 0.2.105
+
       - name: Build
         run: worker-build --release
-        
+
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
