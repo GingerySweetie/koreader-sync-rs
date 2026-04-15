@@ -15,7 +15,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         
       - name: Install worker-build
-        run: cargo install -q worker-build@0.1
+        run: cargo install -q worker-build --version "^0.1"
         
       - name: Build
         run: worker-build --release
